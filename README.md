@@ -1,4 +1,5 @@
 # Analytics Mini-POC
+**Book 15 min:** https://calendly.com/savinop/intro
 
 Goal: surface 3 KPI proof moments from a REST API.
 
