@@ -23,5 +23,5 @@ Goal: surface 3 KPI proof moments from a REST API.
 - Repo with minimal scripts
 - 90-sec Loom: https://example-loom-link
 
-## Book a 15-min intro
+## Book a 15-min intro[https://calendly.com/savinop/intro]
 https://calendly.com/savinop/intro
