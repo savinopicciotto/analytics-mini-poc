@@ -6,11 +6,6 @@ Goal: surface 3 KPI proof moments from a REST API.
 - Data: API -> CSV; tables joined in SQL
 - Stack: Python, SQL, Postman
 
-## Proof moments
-- Leading-indicator trend
-- Stuck cohort
-- Fast-win suggestion
-
 ## How to run
 1. Python 3.11
 2. `python -m venv .venv && source .venv/bin/activate`
@@ -24,5 +19,20 @@ Goal: surface 3 KPI proof moments from a REST API.
 - Repo with minimal scripts
 - 90-sec Loom: https://example-loom-link
 
-## Book a 15-min intro
-https://calendly.com/savinop/intro
+## Proof moments (KPIs)
+1. **Daily orders** - REST -> CSV ingest, group by day, show a 7 day trend.
+2. **Refund rate** - join orders + refunds, compute % and flag outliers.
+3. **Avg resolution time** - join tickets + events, compute mean hours to close.
+
+## Acceptance tests
+- **AT-1 Daily orders**  
+  Run: pipeline on sample data  
+  Expect: table `date, orders` with at least 7 rows; values match notebook.
+
+- **AT-2 Refund rate**  
+  Run: join `orders.csv` + `refunds.csv` on `order_id`  
+  Expect: metric `refund_rate` between 0 and 1; joined row count shown.
+
+- **AT-3 Avg resolution time**  
+  Run: join `tickets.csv` + `ticket_events.csv` on `ticket_id`  
+  Expect: metric `avg_resolution_hours` printed as a float.
