@@ -12,3 +12,6 @@ title: Analytics Mini-POC Hub
 1. Pull REST API data to CSV
 2. Join tables in SQL or pandas
 3. Show 3 KPI proof moments
+
+## Book a 15-min intro
+https://calendly.com/savinop/intro
