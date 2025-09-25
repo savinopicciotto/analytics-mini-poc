@@ -1,14 +1,16 @@
 # Analytics Mini-POC
+
 **Book 15 min:** https://calendly.com/savinop/intro
 
-Goal: surface 3 KPI proof moments from a REST API.
+**What it is**  
+Tiny analytics proof that turns a REST API into 3 KPI moments fast.
 
-- Data: API -> CSV; tables joined in SQL
+- Data flow: REST → CSV; tables joined in SQL
 - Stack: Python, SQL, Postman
 
 ## How to run
 1. Python 3.11
-2. `python -m venv .venv && source .venv/bin/activate`
+2. `python -m venv .venv && source .venv/bin/activate`   (Windows: `.\venv\Scripts\activate`)
 3. `pip install -r requirements.txt`
 4. Set env values in `.env` (copy from `.env.example`)
 5. `python scripts/pull_api.py`
@@ -16,8 +18,8 @@ Goal: surface 3 KPI proof moments from a REST API.
 
 ## Artifacts
 - README (this file)
-- Repo with minimal scripts
-- 90-sec Loom: https://example-loom-link
+- Minimal scripts to ingest/join data
+- **90-sec Loom:** <PASTE LOOM URL>
 
 ## Proof moments (KPIs)
 1. **Daily orders** - REST -> CSV ingest, group by day, show a 7 day trend.
