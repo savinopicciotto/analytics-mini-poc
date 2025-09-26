@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Analytics Mini-POC - 3 KPI Moments</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <h1>Analytics Mini-POC - 3 KPI Moments <span class="pill">90 sec cut</span></h1>
+  <p class="muted">Tiny analytics proof that turns a REST API export into 3 KPIs with a notebook + SQL joins.</p>
+
+  <div class="card">
+    <h3 style="margin:0 0 8px;">What this shows</h3>
+    <ol style="margin:0 0 12px 20px;">
+      <li>REST → CSV: baseline export.</li>
+      <li>SQL joins: users + orders for KPIs.</li>
+      <li>Change proof: apply latest export and see KPIs move.</li>
+    </ol>
+    <h3 style="margin:12px 0 8px;">How to try it</h3>
+    <ul style="margin:0 0 0 18px;">
+      <li>Click the toggle to apply the latest export.</li>
+      <li>Scan the 3 KPIs and the 14-day orders chart.</li>
+    </ul>
+    <p style="margin:12px 0 0;">
+      <a href="https://calendly.com/savinop/intro?utm_source=analytics-minipoc&utm_medium=demo&utm_campaign=90s" target="_blank" rel="noopener">Book 15 min ↗</a>
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="row" style="align-items:center;justify-content:space-between">
+      <strong>Simulate latest export</strong>
+      <label class="row" style="align-items:center;gap:8px;">
+        <input type="checkbox" onchange="toggleMerge(this)"/>
+        <span id="simNote" class="muted">Baseline export</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="kpis">
+    <div class="kpi"><small class="muted">New users (7d)</small><h2 id="newUsers">-</h2></div>
+    <div class="kpi"><small class="muted">Orders (7d)</small><h2 id="orders7d">-</h2></div>
+    <div class="kpi"><small class="muted">Revenue (7d)</small><h2 id="rev7d">-</h2></div>
+  </div>
+
+  <div class="card">
+    <div class="row" style="justify-content:space-between;align-items:center">
+      <strong>Repeat purchase rate</strong>
+      <span class="badge" id="repeat">-</span>
+    </div>
+    <div class="row" style="align-items:center;gap:12px;margin-top:8px">
+      <div id="chart" class="chart" style="flex:1"></div>
+    </div>
+    <div class="legend"><small id="legend" class="muted"></small></div>
+  </div>
+
+  <div class="footer">
+    <small class="muted">Runs static on GitHub Pages (no backend). CSVs live in /docs/data.</small>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
