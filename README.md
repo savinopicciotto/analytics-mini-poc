@@ -1,7 +1,7 @@
 # Analytics Mini-POC - 3 KPI Moments
 
 Watch 90 sec: <LOOM_URL>
-Try the demo: https://savinopicciotto.github.io/analytics-mini-poc/
+Try the demo: https://savinopicciotto.github.io/analytics-mini-poc
 Book 15 min: https://calendly.com/savinop/intro?utm_source=analytics-minipoc&utm_medium=readme&utm_campaign=90s
 
 ## What this shows
