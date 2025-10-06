@@ -1,13 +1,9 @@
 # Analytics Mini-POC - 3 KPI Moments
 
-<a href="https://savinopicciotto.github.io/analytics-mini-poc(https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?sid=6da15a56-984c-46e1-929e-89f45f78d616)"
-     target="_blank" rel="noopener">**Watch 90 sec**</a> · 
-     <a href="https://savinopicciotto.github.io/analytics-mini-poc)"
-     target="_blank" rel="noopener">**Try the demo**</a> · 
-<a href="https://stan.store/Savino/p/minipoc?utm_source=pages-analytics&utm_medium=cta&utm_campaign=mini_poc](https://calendly.com/savinop/intro?utm_source=analytics-minipoc&utm_medium=readme&utm_campaign=90s
-)"     target="_blank" rel="noopener">**Book 15 min**</a> · 
-<a href="https://stan.store/Savino/p/minipoc?utm_source=pages-analytics&utm_medium=cta&utm_campaign=mini_poc"
-     target="_blank" rel="noopener">**Start a mini POC · $499**</a>
+• [**Watch 90 sec Loom**](https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?utm_source=readme-analytics&utm_medium=link&utm_campaign=watch_90s)
+• [**Try the live demo**](https://savinopicciotto.github.io/analytics-mini-poc/?utm_source=readme-analytics&utm_medium=link&utm_campaign=try_demo)
+• [**Book 15 min Intro**](https://calendly.com/savinop/intro?utm_source=readme-analytics&utm_medium=link&utm_campaign=book_intro)
+• [**Start a mini POC · $499**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)
 
 ## What this shows
 1. REST → CSV (baseline export)
@@ -24,3 +20,10 @@
 
 ## Repo
 Source: https://github.com/savinopicciotto/analytics-mini-poc
+
+## Ready to ship?
+• [**Start a mini POC · $499**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)  
+• Or [**book a 15-min intro**](https://calendly.com/savinop/intro?utm_source=readme-analytics&utm_medium=link&utm_campaign=book_intro)
+
+*Turnaround: **5–10 days**. Deliverables: 90-sec Loom + shareable live URL + MAP (acceptance tests).  
+**100% refund** if acceptance tests aren’t met.*
