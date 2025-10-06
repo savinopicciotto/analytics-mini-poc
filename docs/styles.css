@@ -17,3 +17,5 @@ button:hover{background:#f9fafb}
 .bar{flex:1;min-width:8px;background:#d1d5db}
 .legend{display:flex;gap:8px;justify-content:center;margin-top:8px}
 .badge{padding:2px 6px;border-radius:999px;border:1px solid #e5e7eb;font-size:12px}
+.ctas { margin: 8px 0 12px; }
+.ctas a + a { margin-left: 12px; }
