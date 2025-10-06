@@ -20,6 +20,7 @@
 ## Repo
 Source: https://github.com/savinopicciotto/analytics-mini-poc
 
+## Book
 <p style="margin:6px 0 0;">
   <a href="https://stan.store/Savino/p/minipoc?utm_source=pages-analytics&utm_medium=cta&utm_campaign=mini_poc"
      target="_blank" rel="noopener"><strong>Start a mini POC — $499</strong></a>
