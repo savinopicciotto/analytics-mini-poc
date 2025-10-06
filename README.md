@@ -3,8 +3,10 @@
 **Watch 90 sec:** https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?sid=6da15a56-984c-46e1-929e-89f45f78d616  
 **Try the demo:** https://savinopicciotto.github.io/analytics-mini-poc  
 **Book 15 min:** https://calendly.com/savinop/intro?utm_source=analytics-minipoc&utm_medium=readme&utm_campaign=90s
+
 <a href="https://stan.store/Savino/p/minipoc?utm_source=pages-analytics&utm_medium=cta&utm_campaign=mini_poc"
-     target="_blank" rel="noopener">**Start a mini POC**</a>
+     target="_blank" rel="noopener">
+**Start a mini POC**</a>
 
 ## What this shows
 1. REST → CSV (baseline export)
