@@ -1,9 +1,11 @@
 # Analytics Mini-POC - 3 KPI Moments
 
-• [**Watch 90 sec Loom**](https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?utm_source=readme-analytics&utm_medium=link&utm_campaign=watch_90s)
-• [**Try the live demo**](https://savinopicciotto.github.io/analytics-mini-poc/?utm_source=readme-analytics&utm_medium=link&utm_campaign=try_demo)
-• [**Book 15 min Intro**](https://calendly.com/savinop/intro?utm_source=readme-analytics&utm_medium=link&utm_campaign=book_intro)
-• [**Start a mini POC · $499**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)
+- [**Start mini POC · $499**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)
+- [**Book 15-min intro**](https://calendly.com/savinop/intro?utm_source=readme-analytics&utm_medium=link&utm_campaign=book_intro)
+- [**Try live demo**](https://savinopicciotto.github.io/analytics-mini-poc/?utm_source=readme-analytics&utm_medium=link&utm_campaign=try_demo)
+- [**Watch 90 sec Loom**](https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?utm_source=readme-analytics&utm_medium=link&utm_campaign=watch_90s)
+
+*Deliverables (5–10 days): 90-sec Loom • shareable live demo URL • MAP (acceptance tests).*
 
 ## What this shows
 1. REST → CSV (baseline export)
