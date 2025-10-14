@@ -19,3 +19,4 @@ button:hover{background:#f9fafb}
 .badge{padding:2px 6px;border-radius:999px;border:1px solid #e5e7eb;font-size:12px}
 .ctas { margin: 8px 0 12px; }
 .ctas a + a { margin-left: 12px; }
+.wrap { max-width: 980px; margin: 0 auto; }
