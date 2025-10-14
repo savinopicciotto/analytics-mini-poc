@@ -20,3 +20,14 @@ button:hover{background:#f9fafb}
 .ctas { margin: 8px 0 12px; }
 .ctas a + a { margin-left: 12px; }
 .wrap { max-width: 980px; margin: 0 auto; }
+.pill{
+  background:#f3f4f6;
+  border:1px solid #e5e7eb;
+  padding:2px 8px;
+  border-radius:9999px;
+  font-size:12px;
+  line-height:1;
+  display:inline-block;
+}
+.footer{ margin:24px 0; }
+.footer .pill{ margin-right:8px; }
