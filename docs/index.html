@@ -1,0 +1,760 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analytics Mini-POC — 3 KPI Moments</title>
+  <meta name="description" content="90-sec Loom + shareable live demo URL + MAP (acceptance tests).">
+  <meta property="og:title" content="Analytics Mini-POC — 3 KPI Moments">
+  <meta property="og:description" content="90-sec Loom + shareable live demo URL + MAP (acceptance tests).">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://savinopicciotto.github.io/analytics-mini-poc/">
+  <meta property="og:image" content="https://savinopicciotto.github.io/analytics-mini-poc/social.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://savinopicciotto.github.io/analytics-mini-poc/">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #0a0a0a;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    
+    .wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    
+    .pill {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      margin-left: 12px;
+      color: #999;
+      font-weight: 500;
+    }
+    
+    .muted {
+      color: #999;
+      font-size: 0.95rem;
+    }
+    
+    .card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      transition: border-color 0.3s ease;
+    }
+    
+    .card:hover {
+      border-color: #333;
+    }
+    
+    .ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    
+    .ctas a, .btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: transform 0.2s, opacity 0.2s;
+      border: none;
+      cursor: pointer;
+      display: inline-block;
+    }
+    
+    .ctas a:hover, .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+    
+    .btn-secondary {
+      background: #1a1a1a;
+      border: 1px solid #333;
+    }
+    
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    input[type="checkbox"] {
+      width: 44px;
+      height: 24px;
+      appearance: none;
+      background: #333;
+      border-radius: 12px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    input[type="checkbox"]:checked {
+      background: #667eea;
+    }
+    
+    input[type="checkbox"]::after {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: white;
+      top: 3px;
+      left: 3px;
+      transition: left 0.3s;
+    }
+    
+    input[type="checkbox"]:checked::after {
+      left: 23px;
+    }
+    
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    
+    .kpi {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .kpi:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+    }
+    
+    .kpi small {
+      display: block;
+      margin-bottom: 8px;
+    }
+    
+    .kpi-change {
+      font-size: 0.8rem;
+      margin-top: 4px;
+      color: #4ade80;
+      font-weight: 600;
+    }
+    
+    .kpi-change.negative {
+      color: #f87171;
+    }
+    
+    .badge {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 6px 16px;
+      border-radius: 6px;
+      font-weight: 600;
+      color: #667eea;
+      transition: all 0.3s ease;
+    }
+    
+    .chart {
+      background: #0a0a0a;
+      border-radius: 6px;
+      padding: 20px;
+      min-height: 220px;
+      position: relative;
+    }
+    
+    .bar-chart {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 180px;
+      gap: 4px;
+    }
+    
+    .bar-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    
+    .bar {
+      width: 100%;
+      background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .bar:hover {
+      opacity: 0.8;
+      transform: scaleY(1.05);
+    }
+    
+    .bar-value {
+      position: absolute;
+      top: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.7rem;
+      color: #667eea;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    
+    .bar:hover .bar-value {
+      opacity: 1;
+    }
+    
+    .bar-label {
+      margin-top: 8px;
+      font-size: 0.7rem;
+      color: #666;
+      white-space: nowrap;
+    }
+    
+    .legend {
+      margin-top: 16px;
+      text-align: center;
+    }
+    
+    .footer {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    
+    ol, ul {
+      color: #ccc;
+      line-height: 1.8;
+    }
+    
+    strong {
+      color: #fff;
+    }
+    
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #222;
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    
+    .metric-item {
+      background: #0a0a0a;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #1a1a1a;
+    }
+    
+    .metric-label {
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 4px;
+    }
+    
+    .metric-value {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    
+    .error {
+      background: #1a0a0a;
+      border: 1px solid #991b1b;
+      color: #f87171;
+      padding: 12px;
+      border-radius: 6px;
+      margin: 12px 0;
+    }
+    
+    @media (max-width: 640px) {
+      .ctas {
+        flex-direction: column;
+      }
+      
+      .ctas a, .btn {
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 1.5rem;
+      }
+      
+      .bar-chart {
+        gap: 2px;
+      }
+      
+      .bar-label {
+        font-size: 0.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Analytics Mini-POC - 3 KPI Moments <span class="pill">90 sec cut</span></h1>
+    <p class="muted">Tiny analytics proof that turns a REST API export into 3 KPIs with a notebook + SQL joins.</p>
+
+    <div class="card">
+      <p class="ctas">
+        <a href="https://stan.store/Savino/p/minipoc?utm_source=pages-analytics&utm_medium=cta&utm_campaign=mini_poc"
+           target="_blank" rel="noopener noreferrer">Start mini POC · $499</a>
+        <a href="https://calendly.com/savinop/intro?utm_source=analytics-minipoc&utm_medium=demo&utm_campaign=book"
+           target="_blank" rel="noopener noreferrer">Book 15-min intro</a>
+        <a href="https://www.loom.com/share/2b97ef1f9b204054ae7cec6c1d21cf8c?sid=f2b87f54-57c1-48aa-bb31-e551855d1c03&utm_source=pages-analytics-minipoc&utm_medium=link&utm_campaign=watch_90s&utm_content=cta_top"
+           target="_blank" rel="noopener noreferrer">Watch 90-sec Loom</a>
+        <a href="https://github.com/savinopicciotto/analytics-mini-poc" target="_blank" rel="noopener">README + Repo</a>
+        <button class="btn btn-secondary" onclick="exportData()">↓ Export Data</button>
+      </p>
+      <p class="muted">Deliverables (5–10 days): 90-sec Loom • shareable live demo URL • MAP (acceptance tests).</p>
+      
+      <h3 style="margin:12px 0 8px;">What this shows</h3>
+      <ol style="margin:0 0 12px 20px;">
+        <li>REST → CSV: baseline export.</li>
+        <li>SQL joins: users + orders for KPIs.</li>
+        <li>Change proof: apply latest export and see KPIs move.</li>
+      </ol>
+      
+      <h3 style="margin:12px 0 8px;">How to try it</h3>
+      <ul style="margin:0 0 0 18px;">
+        <li>Click the toggle to apply the latest export.</li>
+        <li>Scan the 3 KPIs and the 14-day orders chart.</li>
+        <li>Hover over bars to see exact values.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <strong>Simulate latest export</strong>
+        <label class="row" style="gap:8px;">
+          <input type="checkbox" id="toggleExport" onchange="toggleMerge(this)"/>
+          <span id="simNote" class="muted">Baseline export</span>
+        </label>
+      </div>
+    </div>
+
+    <div id="loadingState" class="loading" style="display: none;">
+      <div class="spinner"></div>
+      <p class="muted">Loading data from CSV exports...</p>
+    </div>
+
+    <div id="errorState" style="display: none;"></div>
+
+    <div id="mainContent" style="display: none;">
+      <div class="kpis fade-in">
+        <div class="kpi">
+          <small class="muted">New users (7d)</small>
+          <h2 id="newUsers">-</h2>
+          <div id="newUsersChange" class="kpi-change"></div>
+        </div>
+        <div class="kpi">
+          <small class="muted">Orders (7d)</small>
+          <h2 id="orders7d">-</h2>
+          <div id="orders7dChange" class="kpi-change"></div>
+        </div>
+        <div class="kpi">
+          <small class="muted">Revenue (7d)</small>
+          <h2 id="rev7d">-</h2>
+          <div id="rev7dChange" class="kpi-change"></div>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="row" style="justify-content:space-between;margin-bottom:16px;">
+          <strong>Additional metrics</strong>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <div class="metric-label">Avg Order Value</div>
+            <div class="metric-value" id="aov">-</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">Repeat Rate</div>
+            <div class="metric-value" id="repeatRate">-</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">Total Users</div>
+            <div class="metric-value" id="totalUsers">-</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">Total Orders</div>
+            <div class="metric-value" id="totalOrders">-</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card fade-in">
+        <div class="row" style="justify-content:space-between;margin-bottom:16px;">
+          <strong>14-day order volume</strong>
+          <span class="badge" id="trendBadge">-</span>
+        </div>
+        <div id="chart" class="chart"></div>
+        <div class="legend">
+          <small id="legend" class="muted"></small>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <span class="pill">Runs static on GitHub Pages</span>
+      <span class="pill">Loads from CSV exports</span>
+      <span class="pill">No backend required</span>
+    </div>
+  </div>
+
+  <script>
+    let baselineData = { users: [], orders: [] };
+    let latestData = { users: [], orders: [] };
+    let currentData = baselineData;
+    let isLatest = false;
+
+    // CSV parsing utility - FIXED to handle edge cases
+    function parseCSV(text) {
+      const lines = text.trim().split('\n').filter(line => line.trim());
+      if (lines.length === 0) return [];
+      
+      const headers = lines[0].split(',').map(h => h.trim());
+      return lines.slice(1).map(line => {
+        const values = line.split(',').map(v => v.trim());
+        const obj = {};
+        headers.forEach((header, i) => {
+          obj[header] = values[i] || '';
+        });
+        return obj;
+      });
+    }
+
+    // Load CSV files
+    async function loadData() {
+      const loading = document.getElementById('loadingState');
+      const error = document.getElementById('errorState');
+      const main = document.getElementById('mainContent');
+      
+      loading.style.display = 'flex';
+      error.style.display = 'none';
+      main.style.display = 'none';
+
+      try {
+        // CRITICAL FIX: Force cache bust with timestamp
+        const timestamp = new Date().getTime();
+        const dataPath = '../data/'; // Go up one level from /docs/
+        
+        console.log('Loading CSV files with cache bust...');
+        
+        const [usersRes, ordersRes, usersLatestRes, ordersLatestRes] = await Promise.all([
+          fetch(`${dataPath}users.csv?v=${timestamp}`),
+          fetch(`${dataPath}orders.csv?v=${timestamp}`),
+          fetch(`${dataPath}users_latest.csv?v=${timestamp}`),
+          fetch(`${dataPath}orders_latest.csv?v=${timestamp}`)
+        ]);
+
+        if (!usersRes.ok || !ordersRes.ok) {
+          throw new Error(`Failed to load CSV files: users=${usersRes.status}, orders=${ordersRes.status}`);
+        }
+
+        const [usersText, ordersText, usersLatestText, ordersLatestText] = await Promise.all([
+          usersRes.text(),
+          ordersRes.text(),
+          usersLatestRes.text(),
+          ordersLatestRes.text()
+        ]);
+
+        // Parse and validate
+        baselineData.users = parseCSV(usersText);
+        baselineData.orders = parseCSV(ordersText);
+        latestData.users = parseCSV(usersLatestText);
+        latestData.orders = parseCSV(ordersLatestText);
+
+        console.log('Loaded baseline:', {
+          users: baselineData.users.length,
+          orders: baselineData.orders.length
+        });
+        console.log('Loaded latest:', {
+          users: latestData.users.length,
+          orders: latestData.orders.length
+        });
+
+        // Validate we have data
+        if (baselineData.users.length === 0 || baselineData.orders.length === 0) {
+          throw new Error('CSV files are empty or malformed');
+        }
+
+        currentData = baselineData;
+        
+        loading.style.display = 'none';
+        main.style.display = 'block';
+        
+        calculateKPIs();
+        renderChart();
+      } catch (err) {
+        console.error('Load error:', err);
+        loading.style.display = 'none';
+        error.style.display = 'block';
+        error.innerHTML = `
+          <div class="error">
+            <strong>⚠️ Could not load CSV files</strong><br>
+            <small>${err.message}</small><br><br>
+            <small>Check browser console (F12) for details</small>
+          </div>
+        `;
+      }
+    }
+
+    function toggleMerge(checkbox) {
+      isLatest = checkbox.checked;
+      currentData = checkbox.checked ? latestData : baselineData;
+      const note = document.getElementById('simNote');
+      note.textContent = checkbox.checked ? 'Latest export applied' : 'Baseline export';
+      
+      console.log('Toggled to:', checkbox.checked ? 'latest' : 'baseline');
+      console.log('Current data:', {
+        users: currentData.users.length,
+        orders: currentData.orders.length
+      });
+      
+      calculateKPIs();
+      renderChart();
+    }
+
+    function calculateKPIs() {
+      // CRITICAL FIX: Use Nov 5, 2024 as reference date
+      const now = new Date('2024-11-05');
+      const sevenDaysAgo = new Date(now);
+      sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+      console.log('Calculating KPIs for window:', sevenDaysAgo.toISOString().split('T')[0], 'to', now.toISOString().split('T')[0]);
+
+      // Calculate for current view
+      const newUsers = currentData.users.filter(u => {
+        const created = new Date(u.created);
+        const inRange = created >= sevenDaysAgo && created <= now;
+        return inRange;
+      }).length;
+
+      const recentOrders = currentData.orders.filter(o => {
+        const orderDate = new Date(o.date);
+        return orderDate >= sevenDaysAgo && orderDate <= now;
+      });
+
+      const orders7d = recentOrders.length;
+      const rev7d = recentOrders.reduce((sum, o) => sum + parseFloat(o.revenue || 0), 0);
+
+      console.log('Current KPIs:', { newUsers, orders7d, rev7d });
+
+      // Calculate for baseline (for comparison)
+      const baselineNewUsers = baselineData.users.filter(u => {
+        const created = new Date(u.created);
+        return created >= sevenDaysAgo && created <= now;
+      }).length;
+
+      const baselineRecentOrders = baselineData.orders.filter(o => {
+        const orderDate = new Date(o.date);
+        return orderDate >= sevenDaysAgo && orderDate <= now;
+      });
+
+      const baselineOrders7d = baselineRecentOrders.length;
+      const baselineRev7d = baselineRecentOrders.reduce((sum, o) => sum + parseFloat(o.revenue || 0), 0);
+
+      // Update main KPIs
+      document.getElementById('newUsers').textContent = newUsers;
+      document.getElementById('orders7d').textContent = orders7d;
+      document.getElementById('rev7d').textContent = '$' + Math.round(rev7d);
+
+      // Show deltas if viewing latest
+      if (isLatest) {
+        showChange('newUsersChange', newUsers - baselineNewUsers);
+        showChange('orders7dChange', orders7d - baselineOrders7d);
+        showChange('rev7dChange', rev7d - baselineRev7d, true);
+      } else {
+        document.getElementById('newUsersChange').textContent = '';
+        document.getElementById('orders7dChange').textContent = '';
+        document.getElementById('rev7dChange').textContent = '';
+      }
+
+      // Additional metrics
+      const totalRevenue = currentData.orders.reduce((sum, o) => sum + parseFloat(o.revenue || 0), 0);
+      const aov = currentData.orders.length > 0 ? totalRevenue / currentData.orders.length : 0;
+      
+      const orderCounts = {};
+      currentData.orders.forEach(o => {
+        orderCounts[o.user_id] = (orderCounts[o.user_id] || 0) + 1;
+      });
+      const repeatCustomers = Object.values(orderCounts).filter(count => count >= 2).length;
+      const totalCustomers = Object.keys(orderCounts).length;
+      const repeatRate = totalCustomers > 0 ? (repeatCustomers / totalCustomers) * 100 : 0;
+
+      document.getElementById('aov').textContent = '$' + Math.round(aov);
+      document.getElementById('repeatRate').textContent = Math.round(repeatRate) + '%';
+      document.getElementById('totalUsers').textContent = currentData.users.length;
+      document.getElementById('totalOrders').textContent = currentData.orders.length;
+    }
+
+    function showChange(elementId, change, isCurrency = false) {
+      const el = document.getElementById(elementId);
+      if (change === 0) {
+        el.textContent = '';
+        return;
+      }
+      
+      const sign = change > 0 ? '+' : '';
+      const value = isCurrency ? '$' + Math.round(change) : change;
+      el.textContent = sign + value;
+      el.className = change > 0 ? 'kpi-change' : 'kpi-change negative';
+    }
+
+    function renderChart() {
+      const chartDiv = document.getElementById('chart');
+      const now = new Date('2024-11-05');
+      const fourteenDaysAgo = new Date(now);
+      fourteenDaysAgo.setDate(fourteenDaysAgo.getDate() - 14);
+
+      const ordersByDate = {};
+      currentData.orders.forEach(o => {
+        const date = new Date(o.date);
+        if (date >= fourteenDaysAgo && date <= now) {
+          const dateStr = o.date;
+          ordersByDate[dateStr] = (ordersByDate[dateStr] || 0) + 1;
+        }
+      });
+
+      const dateRange = [];
+      for (let i = 14; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(d.getDate() - i);
+        const dateStr = d.toISOString().split('T')[0];
+        dateRange.push({
+          date: dateStr,
+          count: ordersByDate[dateStr] || 0,
+          label: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+        });
+      }
+
+      const maxCount = Math.max(...dateRange.map(d => d.count), 1);
+
+      const barsHTML = dateRange.map(d => {
+        const height = (d.count / maxCount) * 100;
+        return `
+          <div class="bar-container">
+            <div class="bar" style="height: ${height}%;" title="${d.label}: ${d.count} orders">
+              ${d.count > 0 ? `<div class="bar-value">${d.count}</div>` : ''}
+            </div>
+            <div class="bar-label">${d.label.split(' ')[1]}</div>
+          </div>
+        `;
+      }).join('');
+
+      chartDiv.innerHTML = `<div class="bar-chart">${barsHTML}</div>`;
+      
+      const totalOrders = dateRange.reduce((sum, d) => sum + d.count, 0);
+      const avgDaily = (totalOrders / 14).toFixed(1);
+      document.getElementById('legend').textContent = `${totalOrders} total orders • ${avgDaily} avg/day`;
+      
+      const trend = dateRange[dateRange.length - 1].count >= dateRange[0].count ? '↗ Trending up' : '↘ Trending down';
+      document.getElementById('trendBadge').textContent = trend;
+    }
+
+    function exportData() {
+      const dataType = isLatest ? 'latest' : 'baseline';
+      const csv = generateCSV();
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `analytics_export_${dataType}_${new Date().toISOString().split('T')[0]}.csv`;
+      a.click();
+      window.URL.revokeObjectURL(url);
+    }
+
+    function generateCSV() {
+      let csv = 'Metric,Value\n';
+      csv += `New Users (7d),${document.getElementById('newUsers').textContent}\n`;
+      csv += `Orders (7d),${document.getElementById('orders7d').textContent}\n`;
+      csv += `Revenue (7d),${document.getElementById('rev7d').textContent}\n`;
+      csv += `Avg Order Value,${document.getElementById('aov').textContent}\n`;
+      csv += `Repeat Rate,${document.getElementById('repeatRate').textContent}\n`;
+      csv += `Total Users,${document.getElementById('totalUsers').textContent}\n`;
+      csv += `Total Orders,${document.getElementById('totalOrders').textContent}\n`;
+      csv += `\nData Type,${isLatest ? 'Latest Export' : 'Baseline Export'}\n`;
+      csv += `Generated,${new Date().toISOString()}\n`;
+      return csv;
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadData);
+  </script>
+</body>
+</html>
