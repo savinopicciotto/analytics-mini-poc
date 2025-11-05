@@ -1,0 +1,11 @@
+id,user_id,date,revenue,product
+1,1,2024-10-25,49,Starter Plan
+2,1,2024-10-28,79,Pro Plan
+3,2,2024-10-29,120,Enterprise Plan
+4,3,2024-10-30,65,Pro Plan
+5,4,2024-10-31,89,Pro Plan
+6,2,2024-11-01,45,Add-on
+7,5,2024-11-01,110,Enterprise Plan
+8,3,2024-11-02,95,Upgrade
+9,6,2024-11-02,75,Pro Plan
+10,4,2024-11-03,130,Enterprise Plan
