@@ -25,7 +25,7 @@ Also see: [Support RAG Sandbox](https://savinopicciotto.github.io/support-rag-sa
 Source: https://github.com/savinopicciotto/analytics-mini-poc
 
 ## Ready to ship?
-• [**Start a mini POC · $499**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)  
+• [**Start a mini POC · $7.5k**](https://stan.store/Savino/p/minipoc?utm_source=readme-analytics&utm_medium=link&utm_campaign=mini_poc)  
 • Or [**book a 15-min intro**](https://calendly.com/savinop/intro?utm_source=readme-analytics&utm_medium=link&utm_campaign=book_intro)
 
 *Turnaround: **5–10 days**. Deliverables: 90-sec Loom + shareable live URL + MAP (acceptance tests).  
